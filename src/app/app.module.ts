@@ -10,6 +10,7 @@ import { NameViewComponent } from './name-view/name-view.component';
 import { SortedViewComponent } from './sorted-view/sorted-view.component';
 import { AgeViewComponent } from './age-view/age-view.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -27,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

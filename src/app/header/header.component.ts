@@ -3,8 +3,9 @@ import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "app-header",
   template: `
+    <!-- Main Div -->
     <header>
-      <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 fixed w-full shadow-md">
+      <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5  shadow-md">
         <div
           class="container flex flex-wrap justify-between items-center mx-auto"
         >
@@ -88,6 +89,7 @@ import { Component, OnInit } from "@angular/core";
         </div>
       </nav>
     </header>
+    <!-- Main Div Ends -->
   `,
   styles: [],
 })
