@@ -4,7 +4,7 @@ import { Component, OnInit } from "@angular/core";
   selector: "app-header",
   template: `
     <header>
-      <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5  shadow-md">
+      <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 fixed w-full shadow-md">
         <div
           class="container flex flex-wrap justify-between items-center mx-auto"
         >
@@ -64,21 +64,21 @@ import { Component, OnInit } from "@angular/core";
               <li></li>
               <li>
                 <a
-                  href="#"
+                  href="nameview"
                   class="block text-lg py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-grey-200 md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                   >Name View</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
+                  href="sortedview"
                   class="block text-lg py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                   >Sorted View</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
+                  href="ageview"
                   class="block text-lg py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                   >Age View</a
                 >

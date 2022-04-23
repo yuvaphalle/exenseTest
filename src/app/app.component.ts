@@ -13,9 +13,9 @@ import { Component, OnInit, ElementRef } from "@angular/core";
 
 
       <!-- Body -->
-     <app-home></app-home>
       <!-- Body Ends -->
 
+      <router-outlet></router-outlet>
 
 
 
@@ -25,7 +25,6 @@ import { Component, OnInit, ElementRef } from "@angular/core";
 
     </div>
 
-    <router-outlet></router-outlet>
   `,
   styles: [],
 })
