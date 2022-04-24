@@ -8,10 +8,10 @@ import { Component, OnInit } from "@angular/core";
       class="flex rounded-lg flex-row min-h-screen justify-center items-center"
     >
       <table
-        class="w-full rounded-lg text-sm text-left text-center text-gray-500 dark:text-gray-400"
+        class="w-full rounded-lg text-sm text-center text-white dark:text-white"
       >
         <thead
-          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          class="text-xs text-white uppercase bg-gray-700 dark:text-white"
         >
           <tr class="br-10">
             <th scope="col" class="px-6 text-xl py-3">Name</th>

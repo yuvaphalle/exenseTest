@@ -12,7 +12,7 @@ import { HelperService } from "../services/helper.service";
         class="w-full rounded-lg text-sm text-center text-gray-500 dark:text-gray-400"
       >
         <thead
-          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          class="text-white uppercase bg-gray-700 dark:text-white"
         >
           <tr class="br-10">
             <th scope="col" class="px-6 text-xl py-3 text-white">Name</th>
