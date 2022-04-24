@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { HelperService } from "../services/helper.service";
 
 @Component({
   selector: "app-sorted-view",
@@ -43,29 +44,18 @@ export class SortedViewComponent implements OnInit {
   // Variables
   ageArray: any[];
   // Constructor
-  constructor() {
+  constructor(private helper: HelperService) {
     // Initializing the ageArray
     if (localStorage.getItem("nameAgeArray") != null) {
       this.ageArray = JSON.parse(localStorage.getItem("nameAgeArray")!);
-      console.log(this.ageArray);
     } else {
       this.ageArray = [];
     }
     // Sorting the ageArray
-    this.ageArray = this.ageArray.sort(this.compare);
+    this.ageArray = this.ageArray.sort(this.helper.compare);
   }
 
-  // Helpers
-  // Sorting the ageArray
-  compare(a: any, b: any) {
-    if (a.name < b.name) {
-      return -1;
-    }
-    if (a.name > b.name) {
-      return 1;
-    }
-    return 0;
-  }
+  
 
   ngOnInit(): void {}
 }
