@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class HelperService {
-
-  constructor() { }
+  constructor() {}
 
   // Helpers
   // Sorting the ageArray
@@ -16,11 +15,8 @@ export class HelperService {
     }
     // Use toUpperCase() to ignore character casing
     if (a.name > b.name) {
-  
       return 1;
     }
     return 0;
   }
-
-  
 }

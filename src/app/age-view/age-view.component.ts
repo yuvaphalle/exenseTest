@@ -47,7 +47,6 @@ export class AgeViewComponent implements OnInit {
     // Initializing the ageArray
     if (localStorage.getItem("nameAgeArray") != null) {
       this.ageArray = JSON.parse(localStorage.getItem("nameAgeArray")!);
-      console.log(this.ageArray);
     } else {
       this.ageArray = [];
     }

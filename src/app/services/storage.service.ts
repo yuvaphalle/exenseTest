@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { Response } from "../models/response";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class StorageService {
-
-  constructor() { }
+  constructor() {}
 
   // Save data to local storage
   saveUser(data: Response) {

@@ -55,7 +55,5 @@ export class SortedViewComponent implements OnInit {
     this.ageArray = this.ageArray.sort(this.helper.compare);
   }
 
-  
-
   ngOnInit(): void {}
 }

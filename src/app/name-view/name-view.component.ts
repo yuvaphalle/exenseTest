@@ -24,13 +24,13 @@ import { StorageService } from "../services/storage.service";
         [formGroup]="nameForm"
         (ngSubmit)="onSubmit(nameForm)"
       >
-      
         <div class="items-center border-b border-sky-500 py-2">
-          <div class=""
+          <div
+            class=""
             formArrayName="usernames"
-            *ngFor="let name of getNames(); let i = index" 
+            *ngFor="let name of getNames(); let i = index"
           >
-          <!-- form group -->
+            <!-- form group -->
             <div [formGroupName]="i" class="flex items-center">
               <input
                 formControlName="username"
@@ -41,9 +41,20 @@ import { StorageService } from "../services/storage.service";
                 placeholder="Add Name"
                 aria-label="Name"
               />
-              <button class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-2 mt-2 py-0.5 text-center " *ngIf="i != 0" (click)="removeNames(i)">X</button>
+              <button
+                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-2 mt-2 py-0.5 text-center "
+                *ngIf="i != 0"
+                (click)="removeNames(i)"
+              >
+                X
+              </button>
             </div>
-            <p class=" text-red-500 mb-2" *ngIf="getName(i).hasError('required') && getName(i).touched">Username is required</p>
+            <p
+              class=" text-red-500 mb-2"
+              *ngIf="getName(i).hasError('required') && getName(i).touched"
+            >
+              Username is required
+            </p>
           </div>
           <button
             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
@@ -87,8 +98,15 @@ import { StorageService } from "../services/storage.service";
         <p *ngFor="let message of msg.split(',')">
           {{ message }}
         </p>
-        <p class=" text-red-500">{{ errmsg }}
-        <button class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-2 mt-2 py-0.5 text-center " *ngIf="errmsg" (click)="removeMsg()">X</button>
+        <p class=" text-red-500">
+          {{ errmsg }}
+          <button
+            class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-2 mt-2 py-0.5 text-center "
+            *ngIf="errmsg"
+            (click)="removeMsg()"
+          >
+            X
+          </button>
         </p>
       </form>
       <!-- End Form -->
@@ -101,7 +119,7 @@ export class NameViewComponent implements OnInit {
   // Variables
   nameForm: FormGroup;
   msg: string = "";
-  errmsg : string = "";
+  errmsg: string = "";
   name = "";
   submitStatus: boolean = false;
   result: any;
@@ -156,7 +174,7 @@ export class NameViewComponent implements OnInit {
           .then(({ data }) => {
             // Save to local storage
             if (data.age) {
-              this.storageService.saveUser(data); 
+              this.storageService.saveUser(data);
               // Update local storage
               this.resetForm(form);
               this.submitStatus = true;
@@ -192,7 +210,6 @@ export class NameViewComponent implements OnInit {
             allUsers.push(this.storageService.getSingleUser(user.username));
           } else {
             usersToBePredicted.push(user.username);
-            
           }
         });
         this.msg = this.getMessage(allUsers);
@@ -205,23 +222,20 @@ export class NameViewComponent implements OnInit {
               // Save to local storage
               data.forEach((user: Response) => {
                 if (user.age) {
-                    this.storageService.saveUser(user);
-                    allUsers.push(user);
+                  this.storageService.saveUser(user);
+                  allUsers.push(user);
+                } else {
+                  this.msg = user.name + " has no age";
+                  this.resetForm(form);
                 }
-              else {
-              this.msg = user.name + " has no age";
-              this.resetForm(form);
-            }
               });
 
               this.resetForm(form);
               this.submitStatus = true;
               this.result = data;
               this.msg = this.getMessage(allUsers);
-              
             })
-            .catch((error) => {
-            });
+            .catch((error) => {});
         }
       }
     }
@@ -230,25 +244,18 @@ export class NameViewComponent implements OnInit {
   callTheApi() {
     this.agify
       .predictAge("")
-      .then(({ data }) => {
-      })
+      .then(({ data }) => {})
       .catch((error) => {
         // If API call fails
         if (error == "Error: Request failed with status code 422") {
           this.errmsg =
             "Encounetered an error invalid arguments check if named was typed correctly";
-        } else if (
-          error == "Error: Request failed with status code 429"
-        ) {
+        } else if (error == "Error: Request failed with status code 429") {
           this.errmsg = "Encounetered an error too many requests";
-        } else if (
-          error == "Error: Request failed with status code 401"
-        ) {
+        } else if (error == "Error: Request failed with status code 401") {
           this.errmsg =
             "Encounetered an error invalid API key check if API key is correct";
-        } else if (
-          error == "Error: Request failed with status code 402"
-        ) {
+        } else if (error == "Error: Request failed with status code 402") {
           this.errmsg = "Encounetered an error subcription not active";
         } else {
           this.errmsg = "Encounetered an error ";
@@ -267,10 +274,12 @@ export class NameViewComponent implements OnInit {
     // Get all names
     return (this.nameForm.get("usernames") as FormArray).controls;
   }
-  
+
   getName(index: number) {
     // Get name at index
-    return (this.nameForm.get("usernames") as FormArray).controls[index].get('username') as FormControl;
+    return (this.nameForm.get("usernames") as FormArray).controls[index].get(
+      "username"
+    ) as FormControl;
   }
 
   getMessage(allUsers: Response[]): string {
@@ -279,12 +288,7 @@ export class NameViewComponent implements OnInit {
     let msg = "";
     allUsers.forEach((user: Response) => {
       if (user.age) {
-        msg +=
-          "Name " +
-          user.name +
-          " predicted age is : " +
-          user.age +
-          ",";
+        msg += "Name " + user.name + " predicted age is : " + user.age + ",";
       } else {
         msg += "Name " + user.name + " has no age,";
       }
@@ -309,7 +313,7 @@ export class NameViewComponent implements OnInit {
       fa.removeAt(index);
     }
   }
-  
+
   removeMsg() {
     // Remove message
     this.errmsg = "";
