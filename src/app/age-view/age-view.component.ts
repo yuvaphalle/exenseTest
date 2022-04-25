@@ -20,7 +20,7 @@ import { Component, OnInit } from "@angular/core";
         </thead>
         <tbody>
           <tr
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            class="border-b bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
             *ngFor="let predict of ageArray"
           >
             <td class="px-6 py-4 text-white">

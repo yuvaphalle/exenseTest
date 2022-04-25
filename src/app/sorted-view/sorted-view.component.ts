@@ -12,7 +12,7 @@ import { HelperService } from "../services/helper.service";
         class="w-full rounded-lg text-sm text-center text-gray-500 dark:text-gray-400"
       >
         <thead
-          class="text-white uppercase bg-gray-700 dark:text-white"
+          class="text-white uppercase bg-gray-700 dark:text-gray-700"
         >
           <tr class="br-10">
             <th scope="col" class="px-6 text-xl py-3 text-white">Name</th>
@@ -21,7 +21,7 @@ import { HelperService } from "../services/helper.service";
         </thead>
         <tbody>
           <tr
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            class=" border-b bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
             *ngFor="let predict of ageArray"
           >
             <td class="px-6 py-4 text-white">

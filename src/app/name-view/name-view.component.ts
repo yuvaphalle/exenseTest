@@ -55,6 +55,9 @@ import { StorageService } from "../services/storage.service";
             >
               Username is required
             </p>
+            <p class="text-green-500" *ngFor="let message of msg.split(',')">
+              {{ message }}
+            </p>
           </div>
           <button
             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
@@ -95,9 +98,7 @@ import { StorageService } from "../services/storage.service";
           <!-- Response message -->
           <p class="text-red-500">Name is required</p>
         </div>
-        <p *ngFor="let message of msg.split(',')">
-          {{ message }}
-        </p>
+
         <p class=" text-red-500">
           {{ errmsg }}
           <button
