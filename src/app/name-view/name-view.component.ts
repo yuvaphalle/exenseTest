@@ -200,26 +200,30 @@ export class NameViewComponent implements OnInit {
         // Checks all the available usres
         var allUsers: Response[] = [];
         const usersAlreadyExist = [];
+        var usersToBePredictedUniuque = [];
         const usersToBePredicted: string[] = [];
         users.forEach((user) => {
           if (
             // Check if user exists in local storage
-            this.storageService.isUser(user.username) ||
-            user.username == ""
+            this.storageService.isUser(user.username)
           ) {
-            usersAlreadyExist.push(user.username);
+            usersAlreadyExist.push(user.username.toLowerCase());
             // Update local storage
-            allUsers.push(this.storageService.getSingleUser(user.username));
+            allUsers.push(
+              this.storageService.getSingleUser(user.username.toLowerCase())
+            );
           } else {
-            usersToBePredicted.push(user.username);
+            usersToBePredicted.push(user.username.toLowerCase());
           }
         });
         this.msg = this.getMessage(allUsers);
 
+        usersToBePredictedUniuque = usersToBePredicted.filter(this.onlyUnique);
+        console.log("new", usersToBePredictedUniuque);
         // Call agify for bulk prediction
-        if (usersToBePredicted.length > 0) {
+        if (usersToBePredictedUniuque.length > 0) {
           this.agify
-            .predictBulkAge(usersToBePredicted)
+            .predictBulkAge(usersToBePredictedUniuque)
             .then(({ data }) => {
               // Save to local storage
               data.forEach((user: Response) => {
@@ -275,6 +279,9 @@ export class NameViewComponent implements OnInit {
     this.submitStatus = true;
     form.reset();
   };
+  onlyUnique(value: any, index: any, self: any) {
+    return self.indexOf(value) === index;
+  }
 
   getNames() {
     // Get all names
