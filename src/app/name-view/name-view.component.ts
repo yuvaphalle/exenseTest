@@ -197,6 +197,19 @@ export class NameViewComponent implements OnInit {
       }
     } else {
       if (form.valid) {
+        // Check if there is duplicate values.
+        const duplicates: User[] = this.checkVal(users) as User[];
+        if (duplicates.length > 0) {
+          duplicates.forEach((user: User) => {
+            this.msg +=
+              "Name " +
+              user.username +
+              " is duplicated remove duplicates " +
+              "\n" +
+              ", ";
+          });
+          return;
+        }
         // Checks all the available usres
         var allUsers: Response[] = [];
         const usersAlreadyExist = [];
@@ -326,7 +339,26 @@ export class NameViewComponent implements OnInit {
       fa.removeAt(index);
     }
   }
-
+  checkVal(values: User[]): User[] {
+    // Check if there is duplicate values.
+    let duplicates: User[] = [];
+    for (let index = 0; index < values.length - 1; index++) {
+      const element = values[index];
+      if (
+        element.username.toLowerCase() ==
+        values[index + 1].username.toLowerCase()
+      ) {
+        if (
+          duplicates.findIndex(
+            (x) => x.username.toLowerCase() == element.username.toLowerCase()
+          ) == -1
+        ) {
+          duplicates.push(element);
+        }
+      }
+    }
+    return duplicates;
+  }
   removeMsg() {
     // Remove message
     this.errmsg = "";
