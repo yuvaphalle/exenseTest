@@ -9,12 +9,10 @@ export class HelperService {
   // Helpers
   // Sorting the ageArray
   compare(a: any, b: any) {
-    // Use toUpperCase() to ignore character casing
-    if (a.name < b.name) {
+    if (a.name.toUpperCase() < b.name.toUpperCase()) {
       return -1;
     }
-    // Use toUpperCase() to ignore character casing
-    if (a.name > b.name) {
+    if (a.name.toUpperCase() > b.name.toUpperCase()) {
       return 1;
     }
     return 0;

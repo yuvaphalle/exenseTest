@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { HelperService } from "../services/helper.service";
 
 @Component({
   selector: "app-age-view",
@@ -10,9 +11,7 @@ import { Component, OnInit } from "@angular/core";
       <table
         class="w-full rounded-lg text-sm text-center text-white dark:text-white"
       >
-        <thead
-          class="text-xs text-white uppercase bg-gray-700 dark:text-white"
-        >
+        <thead class="text-xs text-white uppercase bg-gray-700 dark:text-white">
           <tr class="br-10">
             <th scope="col" class="px-6 text-xl py-3">Name</th>
             <th scope="col" class="px-6 text-xl py-3">Age</th>
@@ -43,10 +42,13 @@ export class AgeViewComponent implements OnInit {
   // Variables
   ageArray: any[];
   // Constructor
-  constructor() {
+  constructor(private helper: HelperService) {
     // Initializing the ageArray
     if (localStorage.getItem("nameAgeArray") != null) {
       this.ageArray = JSON.parse(localStorage.getItem("nameAgeArray")!);
+      if (this.ageArray.length > 0) {
+        this.ageArray.sort(this.helper.compare);
+      }
     } else {
       this.ageArray = [];
     }
